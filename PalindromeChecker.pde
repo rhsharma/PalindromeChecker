@@ -2,15 +2,15 @@ public void setup()
 {
   String lines[] = loadStrings("palindromes.txt");
   println("there are " + lines.length + " lines");
-  for (int i=0; i < lines.length; i++) 
+  for (int j=0; j < lines.length; j++) 
   {
-    if(palindrome(lines[i])==true)
+    if(palindrome(lines[j])==true)
     {
-      println(lines[i] + " IS a palidrome.");
+      println(lines[j] + " IS a palidrome.");
     }
     else
     {
-      println(lines[i] + " is NOT a palidrome.");
+      println(lines[j] + " is NOT a palidrome.");
     }
   }
 }
@@ -18,7 +18,13 @@ public void setup()
 
 public boolean palindrome(String word)
 {
-  if (word.equals(reverse(word)))
+  String a = new String();
+  for (int i = 0; i<word.length(); i++) {
+    if ((word.charAt(i) != ' ') && (Character.isLetter(word.charAt(i)) == true))
+      a += word.charAt(i);
+  }
+
+  if (a.toLowerCase().equals(reverse(a.toLowerCase())))
     return true;
   else
     return false;
@@ -29,10 +35,9 @@ public String reverse(String str)
 {
     String sNew = new String();
     for(int i = str.length()-1; i >= 0; i--) {
-      if ((Character.isLetter(str.charAt(i)) == true) && (str.charAt(i) != ' '))
         sNew += str.charAt(i);
     }
-    return sNew.toLowerCase();
+    return sNew;
 }
 
 
